@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-sqlite3"
-VERSION=3.7.14.1
+VERSION=3.7.17
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="SQLite 3.x database library for Win64 toolchain"
@@ -19,7 +19,7 @@ DISTCLEANFILES="sqlite3.pc"
 
 NO_AUTOHEADER=1
 CPPFLAGS+=" -fno-strict-aliasing -DSQLITE_SOUNDEX -DSQLITE_ENABLE_COLUMN_METADATA \
-    -DSQLITE_ENABLE_FTS_PARENTHESIS -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS4"
+    -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS4"
 # don't pick up mingw64-x86_64-pthreads by mistake
 CYGCONF_ARGS="--enable-static ac_cv_search_pthread_create=no"
 
