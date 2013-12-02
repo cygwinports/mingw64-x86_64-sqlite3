@@ -3,7 +3,7 @@ inherit cross
 
 NAME="mingw64-x86_64-sqlite3"
 VERSION=3.7.17
-RELEASE=1
+RELEASE=2
 CATEGORY="Devel"
 SUMMARY="SQLite 3.x database library for Win64 toolchain"
 DESCRIPTION="This package does NOT contain cygwin binaries.  Instead, it
@@ -21,7 +21,7 @@ NO_AUTOHEADER=1
 CPPFLAGS+=" -fno-strict-aliasing -DSQLITE_SOUNDEX -DSQLITE_ENABLE_COLUMN_METADATA \
     -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS4"
 # don't pick up mingw64-x86_64-pthreads by mistake
-CYGCONF_ARGS="--enable-static ac_cv_search_pthread_create=no"
+CYGCONF_ARGS="ac_cv_search_pthread_create=no"
 
 src_install() {
 	cd ${B}
