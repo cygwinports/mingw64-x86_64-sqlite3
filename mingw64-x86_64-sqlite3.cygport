@@ -2,8 +2,8 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-sqlite3"
-VERSION=3.7.17
-RELEASE=2
+VERSION=3.8.5
+RELEASE=1
 CATEGORY="Devel"
 SUMMARY="SQLite 3.x database library for Win64 toolchain"
 DESCRIPTION="This package does NOT contain cygwin binaries.  Instead, it
@@ -12,7 +12,7 @@ mingw64-x86_64-gcc cross compiler, and installs into the
 /usr/x86_64-w64-mingw32/sys-root/mingw/{lib,include} directories."
 HOMEPAGE="http://www.sqlite.org/"
 TARBALL_VERSION=$((PV[1] * 1000000 + PV[2] * 10000 + PV[3] * 100 + PV[4]))
-SRC_URI="http://www.sqlite.org/sqlite-autoconf-${TARBALL_VERSION}.tar.gz"
+SRC_URI="http://www.sqlite.org/2014/sqlite-autoconf-${TARBALL_VERSION}.tar.gz"
 SRC_DIR="sqlite-autoconf-${TARBALL_VERSION}"
 
 DISTCLEANFILES="sqlite3.pc"
