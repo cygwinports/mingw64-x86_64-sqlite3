@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-sqlite3"
-VERSION=3.8.11.1
+VERSION=3.14.1
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="SQLite 3.x database library for Win64 toolchain"
@@ -12,16 +12,25 @@ mingw64-x86_64-gcc cross compiler, and installs into the
 /usr/x86_64-w64-mingw32/sys-root/mingw/{lib,include} directories."
 HOMEPAGE="http://www.sqlite.org/"
 TARBALL_VERSION=$((PV[1] * 1000000 + PV[2] * 10000 + PV[3] * 100 + PV[4]))
-SRC_URI="http://www.sqlite.org/2015/sqlite-autoconf-${TARBALL_VERSION}.tar.gz"
-SRC_DIR="sqlite-autoconf-${TARBALL_VERSION}"
+SRC_URI="http://www.sqlite.org/2016/sqlite-src-${TARBALL_VERSION}.zip"
+SRC_DIR="sqlite-src-${TARBALL_VERSION}"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/rpms/mingw-sqlite.git/plain/sqlite-dont-search-for-pthreads-on-non-unix.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/mingw-sqlite.git/plain/sqlite-mingw-crosscompile.patch
+"
 
 DISTCLEANFILES="sqlite3.pc"
 
 NO_AUTOHEADER=1
 CPPFLAGS+=" -fno-strict-aliasing -DSQLITE_SOUNDEX -DSQLITE_ENABLE_COLUMN_METADATA \
-    -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS4"
-# don't pick up mingw64-x86_64-pthreads by mistake
-CYGCONF_ARGS="--enable-static --disable-dynamic-extensions ac_cv_search_pthread_create=no"
+    -DSQLITE_DISABLE_DIRSYNC=1 -DSQLITE_ENABLE_RTREE=1 \
+    -DSQLITE_ENABLE_FTS3_PARENTHESIS=1 -DSQLITE_ENABLE_FTS3=3"
+CYGCONF_ARGS="
+	--enable-static
+	--enable-load-extension
+	--disable-editline
+	--disable-tcl
+"
 
 src_install() {
 	cd ${B}
