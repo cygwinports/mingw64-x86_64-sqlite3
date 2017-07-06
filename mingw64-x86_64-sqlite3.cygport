@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-sqlite3"
-VERSION=3.14.1
+VERSION=3.19.3
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="SQLite 3.x database library for Win64 toolchain"
@@ -12,7 +12,7 @@ mingw64-x86_64-gcc cross compiler, and installs into the
 /usr/x86_64-w64-mingw32/sys-root/mingw/{lib,include} directories."
 HOMEPAGE="http://www.sqlite.org/"
 TARBALL_VERSION=$((PV[1] * 1000000 + PV[2] * 10000 + PV[3] * 100 + PV[4]))
-SRC_URI="http://www.sqlite.org/2016/sqlite-src-${TARBALL_VERSION}.zip"
+SRC_URI="http://www.sqlite.org/2017/sqlite-src-${TARBALL_VERSION}.zip"
 SRC_DIR="sqlite-src-${TARBALL_VERSION}"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/rpms/mingw-sqlite.git/plain/sqlite-dont-search-for-pthreads-on-non-unix.patch
